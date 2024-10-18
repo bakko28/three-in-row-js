@@ -85,3 +85,7 @@ body {
 .tile7 {
     background-color: #7F4870;
 }
+
+.tile.selected {
+    border: 3px #fff solid;
+}
