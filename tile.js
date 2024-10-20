@@ -25,4 +25,23 @@ export class Tile {
     unselect() {
         this.tileElement.classList.remove('selected');
     }
+
+    async remove() {
+        this.tileElement.removeEventListener("click", this.clickHandler());
+        this.tileElement.classList.add("hide");
+        await this.waitForAnimationEnd();
+        this.tileElement.remove();
+    }
+
+    waitForAnimationEnd() {
+        return new Promise(resolve => {
+            this.tileElement.addEventListener("animationend", resolve, {once: true});
+        })
+    }
+
+    waitForTransitionEnd() {
+        return new Promise(resolve => {
+            this.tileElement.addEventListener("transitionend", resolve, {once: true});
+        })
+    }
 }
